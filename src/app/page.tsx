@@ -4,36 +4,85 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 export default function Home() {
+  function handleClickWhatsapp() {
+    const mensagem = encodeURIComponent(
+      "Olá, vim pelo seu portfólio! Podemos conversar?"
+    );
+    const url = `https://wa.me/5531988189294?text=${mensagem}`;
+    window.open(url, "_blank");
+  }
+
+  function handleClickEmail() {
+    const email = "cesardermer1@gmail.com";
+    const subject = "Contato pelo portfólio";
+    const body = "Olá, vim pelo seu portfólio! Podemos conversar?";
+    const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  }
+
+  function handleClickLinkedin() {
+    const url = "https://www.linkedin.com/in/cesarpereira01/";
+    window.open(url, "_blank");
+  }
+
+  function handleClickScroll(id: string) {
+    const elementId = document.getElementById(id);
+    if (elementId) {
+      elementId.scrollIntoView({ behavior: "smooth" });
+    }
+  }
+
   return (
     <div className={styles.body}>
       <header className={styles.header}>
         <div>
-          <p>Portfolio</p>
+          <p>César Pereira dos Santos Filho</p>
         </div>
         <div className={styles.headerButtons}>
-          <button title="topo" type="button">
+          <button
+            title="topo"
+            type="button"
+            onClick={() => handleClickScroll("topo")}
+          >
             INICIO
           </button>
-          <button title="about-me" type="button">
-            SOBRE MIM
+          <button
+            title="projetos"
+            type="button"
+            onClick={() => handleClickScroll("projetos")}
+          >
+            PROJETOS
           </button>
-          <button title="more-info" type="button">
-            SKILLS
-          </button>
-          <button title="contato" type="button">
+          <button
+            title="contato"
+            type="button"
+            onClick={() => handleClickScroll("contato")}
+          >
             CONTATO
           </button>
         </div>
       </header>
-      <main>
-        <div className={styles.container}>
+      <main className={styles.main}>
+        <div className={styles.landing} id="topo">
           <div className={styles.introduction}>
-            <h1 className={styles.title}>César Pereira dos Santos Filho</h1>
+            <Image
+              src="/foto.jpeg"
+              alt="César Pereira dos Santos Filho"
+              width={400}
+              height={200}
+              className={styles.profileImage}
+            ></Image>
             <p className={styles.description}>
-              Formado em Análise e Desenvolvimento de Sistemas, com experiência
-              em desenvolvimento web, especialmente com JavaScript, TypeScript,
-              React e Next.js. Estou sempre buscando aprender novas tecnologias
-              e aprimorar minhas habilidades.
+              Desenvolvedor Web com formação em Análise e Desenvolvimento de
+              Sistemas, atuando principalmente no ecossistema JavaScript. Tenho
+              experiência no desenvolvimento de aplicações modernas utilizando
+              tecnologias como TypeScript, React e Next.js. Sou movido por
+              desafios e estou constantemente em busca de aprimoramento,
+              aprendendo novas ferramentas, práticas e arquiteturas para criar
+              soluções eficientes, escaláveis e com ótima experiência para o
+              usuário.
             </p>
           </div>
           <div className={styles.skills}>
@@ -118,8 +167,10 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className={styles.projects}>
-            <p className={styles.projectsTitle}>Meus Projetos:</p>
+        </div>
+        <div className={styles.projects} id="projetos">
+          <p className={styles.projectsTitle}>Meus Projetos:</p>
+          <div className={styles.projects_cards}>
             <div>
               <p>Calculadora simples</p>
               <p>
@@ -227,12 +278,56 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className={styles.contato} id="contato">
+          <h2>Contato</h2>
+          <p>
+            Se você deseja entrar em contato comigo, sinta-se à vontade para me
+            enviar um e-mail ou uma mensagem direta nas redes sociais.
+          </p>
+          <div className={styles.contactLinksContainer}>
+            <div className={styles.contactLinks}>
+              <Image
+                src={
+                  "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg"
+                }
+                width={30}
+                height={30}
+                alt="LinkedIn"
+                className={styles.icon2}
+              ></Image>
+              <button type="button" onClick={handleClickLinkedin}>
+                LINKEDIN
+              </button>
+            </div>
+            <div className={styles.contactLinks}>
+              <Image
+                src={"/whatsapp.png"}
+                width={30}
+                height={30}
+                alt="Whatsapp"
+                className={styles.icon2}
+              ></Image>
+              <button type="button" onClick={handleClickWhatsapp}>
+                WHATSAPP
+              </button>
+            </div>
+            <div className={styles.contactLinks}>
+              <Image
+                src={"/mail.png"}
+                width={30}
+                height={30}
+                alt="Email"
+                className={styles.icon2}
+              ></Image>
+              <button type="button" onClick={handleClickEmail}>
+                EMAIL
+              </button>
+            </div>
+          </div>
+        </div>
       </main>
       <footer className={styles.footer}>
-        <p>
-          Desenvolvido por César Pereira dos Santos Filho - 2025. Todos os
-          direitos reservados.
-        </p>
+        <p>:)</p>
       </footer>
     </div>
   );

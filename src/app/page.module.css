@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+html {
+  scroll-behavior: smooth;
+}
 
 .header {
   display: flex;
@@ -25,83 +27,144 @@
   cursor: pointer;
 }
 
-.container {
+.main {
+  height: 80vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.landing,
+.projects,
+.contato {
+  scroll-snap-align: start;
+  height: 80vh;
+}
+
+.landing {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 10px;
-  padding: 2px;
 }
 
 .introduction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   font-size: 1.5em;
   text-align: center;
-  padding-top: 10px;
+  width: 50vw;
+  padding: 0 1rem;
 }
 
 .skills {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
   padding: 1rem 0;
+  width: 50vw;
 }
 
-.skills>div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 10px;
+.skills div {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
   transition: box-shadow 0.3s ease;
+}
+
+.icon:hover {
+  transform: scale(1.4);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .projects {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   gap: 20px;
 }
 
 .projectsTitle {
-  font-size: 1.5em;
+  font-size: 2em;
+  margin-bottom: 1rem;
 }
 
-.projects div {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  border: 1px solid #ddd;
-  padding: 1rem;
+.projects_cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.projects_cards div {
+  padding: 20px;
   border-radius: 10px;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+  border: 1px solid #fff;
 }
 
-.projects div:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.projects_cards div:hover {
+  transform: translateY(-5px);
 }
 
 .projects div button {
+  margin-top: 10px;
   padding: 10px;
   border-radius: 5px;
-  align-items: center;
   cursor: pointer;
 }
 
-.icon {
+.contato {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.contato h2 {
+  font-size: 2em;
+}
+
+.contactLinksContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contactLinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.icon2 {
+  width: 30px;
+  height: 30px;
   transition: transform 0.2s ease;
 }
 
-.icon:hover {
-  transform: scale(1.1);
+.contactLinks button {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  width: 10vw;
 }
 
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  height: 10vh;
+  border-top: 1px solid #fff;
 }
